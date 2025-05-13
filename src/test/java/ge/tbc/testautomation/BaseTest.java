@@ -1,77 +1,47 @@
 package ge.tbc.testautomation;
 
+import com.github.javafaker.Faker;
 import com.microsoft.playwright.*;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.asserts.SoftAssert;
 
-import java.lang.reflect.Method;
-import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.Random;
 
 public class BaseTest {
-    protected Playwright playwright;
-    protected Browser browser;
-    protected BrowserContext context;
-    protected Page page;
+   public Random random = new Random();
+   public Faker faker = new Faker();
+  public  SoftAssert softAssert = new SoftAssert();
+   public Playwright playwright;
+   public  Browser browser;
+   public  BrowserContext browserContext;
+    public Page page;
 
-    @Parameters({"browser", "headless"})
-    @BeforeClass(alwaysRun = true)
-    public void setUp(@Optional("chrome") String browserType, @Optional("true") String headless) {
+    @BeforeClass
+    public void setUp(){
         playwright = Playwright.create();
-
-        BrowserType.LaunchOptions launchOptions = new BrowserType.LaunchOptions()
-                .setHeadless(Boolean.parseBoolean(headless));
-
-        switch (browserType.toLowerCase()) {
-            case "firefox":
-                browser = playwright.firefox().launch(launchOptions);
-                break;
-            case "webkit":
-                browser = playwright.webkit().launch(launchOptions);
-                break;
-            default:
-                browser = playwright.chromium().launch(launchOptions);
-        }
-
-        context = browser.newContext(new Browser.NewContextOptions().setViewportSize(1920, 1080));
-        page = context.newPage();
+        BrowserType.LaunchOptions launchOptions = new BrowserType.LaunchOptions();
+        launchOptions.setArgs(Arrays.asList("--disable-gpu", "--disable-extensions", "--start-maximized"));
+        launchOptions.setHeadless(false).setSlowMo(2000);
+        browser = playwright.chromium().launch(launchOptions);
+        browserContext = browser.newContext();
+        page = browserContext.newPage();
 
     }
 
-    @BeforeMethod
-    public void beforeMethod(Method method) {
-        System.out.println("Starting test: " + method.getName());
+    @AfterClass
+    public void tearDown(){
+        browserContext.close();
+        browser.close();
+        playwright.close();
     }
+
+
 
     @AfterMethod
-    public void afterMethod(Method method) {
-        System.out.println("Finished test: " + method.getName());
-
-        if (context != null) {
-            String screenshotPath = "screenshots/" + method.getName() + ".png";
-            page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get(screenshotPath)));
-        }
-    }
-
-    @AfterClass(alwaysRun = true)
-    public void tearDown() {
-        if (page != null) {
-            page.close();
-        }
-        if (context != null) {
-            context.close();
-        }
-        if (browser != null) {
-            browser.close();
-        }
-        if (playwright != null) {
-            playwright.close();
-        }
-    }
-
-    protected void navigateTo(String url) {
-        page.navigate(url);
-    }
-
-    protected void maximizeWindow() {
-        page.setViewportSize(1920, 1080);
+    public void tearDownPerTest() {
+        softAssert.assertAll();
     }
 }
