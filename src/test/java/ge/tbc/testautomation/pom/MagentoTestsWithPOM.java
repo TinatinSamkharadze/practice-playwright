@@ -1,7 +1,7 @@
 package ge.tbc.testautomation.pom;
 
 import ge.tbc.testautomation.BaseTest;
-import ge.tbc.testautomation.steps.*;
+import ge.tbc.testautomation.steps.magento.*;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -24,6 +24,19 @@ public class MagentoTestsWithPOM extends BaseTest {
         signUpSteps = new SignUpSteps(page);
         wishlistSteps = new WishlistSteps(page);
         page.setViewportSize(WIDTH_FOR_DESKTOP, HEIGHT_FOR_DESKTOP);
+
+    }
+
+    @Test
+    public void colorChangeTest()
+    {
+        page.navigate(MAGENTO_URL);
+        homeSteps
+                .waitForOffersToLoad()
+                .locateAllOffersWhichColorsCanBeChanged()
+                .verifyOffersExist()
+                .chooseRandomThreeOffers()
+                .verifyColorChangesReflectOnImage();
 
     }
 
@@ -134,6 +147,7 @@ public class MagentoTestsWithPOM extends BaseTest {
                 .clickSubmitBtn();
        wishlistSteps
                .waitForWishlistAlert()
-               .validateAlertSaysItemSuccessfullyAdded();
+               .validateAlertSaysItemSuccessfullyAdded()
+               .validateWelcomeMessageIsCorrectlyDisplayed();
     }
 }

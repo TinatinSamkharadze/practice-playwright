@@ -24,7 +24,7 @@ public class BaseTest {
         playwright = Playwright.create();
         BrowserType.LaunchOptions launchOptions = new BrowserType.LaunchOptions();
         launchOptions.setArgs(Arrays.asList("--disable-gpu", "--disable-extensions", "--start-maximized"));
-        launchOptions.setHeadless(false).setSlowMo(2000);
+        launchOptions.setHeadless(false);
         browser = playwright.chromium().launch(launchOptions);
         browserContext = browser.newContext();
         page = browserContext.newPage();
