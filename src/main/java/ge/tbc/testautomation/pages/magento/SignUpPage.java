@@ -14,9 +14,9 @@ public class SignUpPage {
 
     public SignUpPage(Page page) {
         this.firstName  = page.getByLabel("First Name");
-        this.lastName =  page.getByLabel("Last Name");
-        this.email = page.getByLabel("Email").first();
-        this.password = page.getByLabel("Password").first();
+        this.lastName =  page.locator("#lastname");
+        this.email = page.locator("#email_address");
+        this.password = page.locator("#password");
         this.confirmPasswordField =  page.locator("#password-confirmation");
         this.submitBtn = page.locator(".action.submit.primary");
 

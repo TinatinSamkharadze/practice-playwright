@@ -2,6 +2,7 @@ package ge.tbc.testautomation;
 
 import com.github.javafaker.Faker;
 import com.microsoft.playwright.*;
+import ge.tbc.testautomation.data.modles.UserCredentials;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -18,7 +19,7 @@ public class BaseTest {
    public  Browser browser;
    public  BrowserContext browserContext;
     public Page page;
-
+    public UserCredentials creds;
     @BeforeClass
     public void setUp(){
         playwright = Playwright.create();
@@ -28,7 +29,7 @@ public class BaseTest {
         browser = playwright.chromium().launch(launchOptions);
         browserContext = browser.newContext();
         page = browserContext.newPage();
-
+        creds = new UserCredentials();
     }
 
     @AfterClass

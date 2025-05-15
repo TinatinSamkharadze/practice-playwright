@@ -9,8 +9,6 @@ public class TestUserFactory {
     public static TestUser registerNewUser(BrowserContext context) {
         Page page = context.newPage();
         SignUpSteps signUpSteps = new SignUpSteps(page);
-
-
         page.navigate("https://practicesoftwaretesting.com/auth/register");
         signUpSteps
                 .enterFirstName()

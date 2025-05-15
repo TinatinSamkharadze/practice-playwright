@@ -177,5 +177,10 @@ public class HomeSteps {
          return this;
      }
 
+    public HomeSteps clickSignInLink()
+    {
+        homePage.signInNavLink.click();
+        return this;
+    }
 
 }

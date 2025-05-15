@@ -23,6 +23,8 @@ public class MagentoTests extends BaseTest {
 
     @Test(priority = 1)
     public void colorChangeTest() {
+        page.navigate(MAGENTO_URL);
+
         Locator allOffers = page.locator(".product-item");
         List<Locator> offersWithColors = IntStream.range(0, allOffers.count())
                 .mapToObj(allOffers::nth)
@@ -56,6 +58,7 @@ public class MagentoTests extends BaseTest {
 
     @Test(priority = 2, groups = "cartOperations")
     public void addToCartTest() {
+        page.navigate(MAGENTO_URL);
 
         Locator searchBarComboBox = page.getByRole(AriaRole.COMBOBOX);
         searchBarComboBox.fill(TEE);
@@ -96,6 +99,8 @@ public class MagentoTests extends BaseTest {
 
     @Test(dependsOnMethods = {"addToCartTest"}, groups = "cartOperations", priority = 3)
     public void deleteFromCart() {
+        page.navigate(MAGENTO_URL);
+
         Locator myCartLink = page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("My Cart"));
         myCartLink.waitFor();
         myCartLink.click();
@@ -114,6 +119,7 @@ public class MagentoTests extends BaseTest {
 
     @Test(priority = 4)
     public void outOfStockOfferTest() {
+        page.navigate(MAGENTO_URL);
 
         Locator hotSellerFirstProductImage = page.locator(".product-image-container").first();
         hotSellerFirstProductImage.waitFor();
@@ -133,6 +139,7 @@ public class MagentoTests extends BaseTest {
 
     @Test(priority = 5)
     public void reviewNumberTest() {
+        page.navigate(MAGENTO_URL);
 
         Locator searchBarComboBox = page.getByRole(AriaRole.COMBOBOX);
         searchBarComboBox.fill(TEE);
@@ -154,6 +161,7 @@ public class MagentoTests extends BaseTest {
 
     @Test(priority = 7)
     public void mobileNavigationTest() {
+        page.navigate(MAGENTO_URL);
 
         Locator topNavigationBar = page.locator("#ui-id-2");
         topNavigationBar.waitFor();
@@ -180,6 +188,7 @@ public class MagentoTests extends BaseTest {
 
     @Test(priority = 6)
     public void saveToFavoritesWhileUnauthorizedTest() {
+        page.navigate(MAGENTO_URL);
 
         Locator searchBarComboBox = page.getByRole(AriaRole.COMBOBOX);
         searchBarComboBox.fill(TEE);

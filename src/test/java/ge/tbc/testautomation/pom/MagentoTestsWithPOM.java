@@ -8,29 +8,36 @@ import org.testng.annotations.Test;
 import static ge.tbc.testautomation.data.Constants.*;
 
 public class MagentoTestsWithPOM extends BaseTest {
-    HomeSteps homeSteps;
-    SearchResultsSteps searchResultsSteps;
-   ItemsSteps itemsSteps;
-   ReviewsSteps reviewsSteps;
-   SignUpSteps signUpSteps;
-   WishlistSteps wishlistSteps;
+   public HomeSteps homeSteps;
+   public SearchResultsSteps searchResultsSteps;
+   public ItemsSteps itemsSteps;
+   public ReviewsSteps reviewsSteps;
+   public SignUpSteps signUpSteps;
+   public WishlistSteps wishlistSteps;
+    public SignInSteps signInSteps;
+    public MyAccountSteps myAccountSteps;
+    public ShippingSteps shippingSteps;
+    public PaymentSteps paymentSteps;
+    public SuccessSteps successSteps;
+
     @BeforeMethod
-    public void resetContext()
-    {
+    public void resetContext() {
         homeSteps = new HomeSteps(page);
         searchResultsSteps = new SearchResultsSteps(page);
         itemsSteps = new ItemsSteps(page);
         reviewsSteps = new ReviewsSteps(page);
         signUpSteps = new SignUpSteps(page);
         wishlistSteps = new WishlistSteps(page);
-        page.setViewportSize(WIDTH_FOR_DESKTOP, HEIGHT_FOR_DESKTOP);
-
+        page.navigate(MAGENTO_URL);
+        this.signInSteps = new SignInSteps(page);
+        this.myAccountSteps = new MyAccountSteps(page);
+        this.shippingSteps = new ShippingSteps(page);
+        this.paymentSteps = new PaymentSteps(page);
+        this.successSteps = new SuccessSteps(page);
     }
 
-    @Test
-    public void colorChangeTest()
-    {
-        page.navigate(MAGENTO_URL);
+    @Test(priority = 1)
+    public void colorChangeTest() {
         homeSteps
                 .waitForOffersToLoad()
                 .locateAllOffersWhichColorsCanBeChanged()
@@ -40,10 +47,8 @@ public class MagentoTestsWithPOM extends BaseTest {
 
     }
 
-    @Test
-    public void addToCartTest()
-    {
-        page.navigate(MAGENTO_URL);
+    @Test(priority = 2)
+    public void addToCartTest() {
         homeSteps
                 .searchForItem(TEE);
         searchResultsSteps
@@ -55,7 +60,7 @@ public class MagentoTestsWithPOM extends BaseTest {
                 .getProductPriceValue()
                 .chooseSize()
                 .chooseColor()
-                .clickAddToCartBtn()
+                .goToCheckout()
                 .validateCartSuccessMessageIsVisible()
                 .clickOnMyCartBtn()
                 .getProductItemName()
@@ -64,33 +69,29 @@ public class MagentoTestsWithPOM extends BaseTest {
                 .validateItemPricesAreSame();
     }
 
-    @Test(dependsOnMethods = {"addToCartTest"})
-    public void deleteFromCart()
-    {
+    @Test(dependsOnMethods = {"addToCartTest"}, priority = 3)
+    public void deleteFromCart() {
         itemsSteps
+                .clickOnMyCartBtn()
                 .clickRemoveItemBtn()
                 .clickConfirmRemovalBtn()
                 .clickOnMyCartBtn()
                 .validateCartIsEmpty();
     }
 
-    @Test
-    public void outOfStockOfferTest()
-    {
-        page.navigate(MAGENTO_URL);
+    @Test(priority = 4)
+    public void outOfStockOfferTest() {
         homeSteps
                 .clickHotSellersFirstItem();
         itemsSteps
                 .chooseSize()
                 .chooseColor()
-                .clickAddToCartBtn()
+                .goToCheckout()
                 .validateQuantityErrorMessage();
     }
 
-    @Test
-    public void reviewNumberTest()
-    {
-        page.navigate(MAGENTO_URL);
+    @Test(priority = 5)
+    public void reviewNumberTest() {
         homeSteps
                 .searchForItem(TEE);
         searchResultsSteps
@@ -101,15 +102,13 @@ public class MagentoTestsWithPOM extends BaseTest {
                 .getNumberOfReviews()
                 .goToReviewsPage();
         reviewsSteps
-                 .waitForReviewsToAppear()
+                .waitForReviewsToAppear()
                 .countHowManyReviewsAreThere()
                 .validateNumberOfReviewsAreTheSame();
     }
 
-    @Test
-    public void mobileNavigationTest()
-    {
-        page.navigate(MAGENTO_URL);
+    @Test(priority = 6)
+    public void mobileNavigationTest() {
         homeSteps
                 .validateTopNavBarIsVisible()
                 .validateSignNavLinkIsVisible()
@@ -123,10 +122,9 @@ public class MagentoTestsWithPOM extends BaseTest {
                 .validateCreateAnAccountLinkIsVisible();
     }
 
-    @Test
-    public void saveToFavoritesWhileUnauthorizedTest()
-    {
-        page.navigate(MAGENTO_URL);
+    @Test(priority = 7)
+    public void saveToFavoritesWhileUnauthorizedTest() {
+        page.setViewportSize(WIDTH_FOR_DESKTOP, HEIGHT_FOR_DESKTOP);
         homeSteps
                 .searchForItem(TEE);
         searchResultsSteps
@@ -135,6 +133,8 @@ public class MagentoTestsWithPOM extends BaseTest {
         itemsSteps
                 .waitUntilStockStatusLabelBecomesVisible()
                 .getProductsTitle()
+                .chooseSize()
+                .chooseColor()
                 .clickAddToWishlistButton()
                 .validateWishlistErrorMsgIsVisible()
                 .clickCreateAnAccountBtn();
@@ -144,10 +144,59 @@ public class MagentoTestsWithPOM extends BaseTest {
                 .enterEmail()
                 .enterPassword()
                 .confirmPassword()
-                .clickSubmitBtn();
-       wishlistSteps
-               .waitForWishlistAlert()
-               .validateAlertSaysItemSuccessfullyAdded()
-               .validateWelcomeMessageIsCorrectlyDisplayed();
+                .clickSubmitBtn()
+                .saveCredentialsTo(creds);
+        wishlistSteps
+                .waitForWishlistAlert()
+                .validateAlertSaysItemSuccessfullyAdded()
+                .validateWelcomeMessageIsCorrectlyDisplayed();
+    }
+
+    @Test(priority = 8,  dependsOnMethods = "saveToFavoritesWhileUnauthorizedTest")
+    public void purchaseItem() {
+        wishlistSteps
+                .clickDropDown()
+                .signOut();
+        homeSteps
+                .clickSignInLink();
+        signInSteps
+                .validateWeAreOnSignInPage()
+                .enterEmail(creds.email)
+                .enterPassword(creds.password)
+                .clickLogin();
+        myAccountSteps
+                .clickOnMyWishListLink();
+        itemsSteps
+                .getProductItemName()
+                .validateItemNamesAreSame()
+                .scrollToAddToCartBtn()
+                .goToCheckout()
+                .clickOnMyCartBtn()
+                .validateWeAreInShoppingCart()
+                .continueShopping();
+        shippingSteps
+                .clickOnProceedToCheckoutBtn()
+                .enterStreetAddress()
+                .enterCityName()
+                .enterPostalCode()
+                .selectState()
+                .enterPhoneNumber()
+                .checkShippingMethod()
+                .clickNextBtn();
+        paymentSteps
+                .retrieveCartSubtotal()
+                .retrieveShippingPrice()
+                .retrieveTotalPrice()
+                .validateShippingIsAddedCorrectly()
+                .validateShippingContentIsDisplayedCorrectly()
+                .clickToApplyDiscountCode()
+                .enterDiscountCode()
+                .clickApplyDiscountBtn()
+                .waitErrorMessageToAppear()
+                .validateErrorMessage()
+                .clickPlaceOrder();
+        successSteps
+                .validateOrderNumberIsDisplayed()
+                .validatePageTitleIsSuccess();
     }
 }

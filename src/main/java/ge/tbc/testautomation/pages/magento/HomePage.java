@@ -15,8 +15,6 @@ public class HomePage {
    public Locator accountMenuLink;
    public Locator allOffersInHotSeller;
 
-
-
     public HomePage(Page page)
     {
         this.searchBarComboBox = page.getByRole(AriaRole.COMBOBOX);

@@ -55,6 +55,7 @@ public class ItemsSteps {
 
     public ItemsSteps chooseSize()
     {
+        itemsPage.sizeOptionXS.waitFor();
         itemsPage.sizeOptionXS.click();
         return this;
     }
@@ -65,11 +66,17 @@ public class ItemsSteps {
         return this;
     }
 
-    public ItemsSteps clickAddToCartBtn()
+    public ItemsSteps scrollToAddToCartBtn()
     {
-       Locator cartBtn = itemsPage.addToCartBtn;
-       cartBtn.waitFor();
-       cartBtn.click();
+        Locator cartBtn = itemsPage.addToCartBtn;
+        cartBtn.scrollIntoViewIfNeeded();
+        return this;
+    }
+    public ItemsSteps goToCheckout()
+    {
+       Locator checkoutBtn = itemsPage.checkout;
+       checkoutBtn.waitFor();
+       checkoutBtn.click();
         return this;
     }
 
@@ -83,6 +90,7 @@ public class ItemsSteps {
 
     public ItemsSteps clickOnMyCartBtn()
     {
+        itemsPage.myCartLink.waitFor();
        itemsPage.myCartLink.click();
         return this;
     }
@@ -169,6 +177,7 @@ public class ItemsSteps {
 
     public ItemsSteps clickAddToWishlistButton()
     {
+        itemsPage.addToWishlistButton.waitFor();
         itemsPage.addToWishlistButton.click();
         return this;
     }
@@ -183,7 +192,22 @@ public class ItemsSteps {
 
     public ItemsSteps clickCreateAnAccountBtn()
     {
+        itemsPage.createAccountButton.waitFor();
         itemsPage.createAccountButton.click();
+        return this;
+    }
+
+    public ItemsSteps validateWeAreInShoppingCart()
+    {
+       Locator pageTitle = page.getByText("Shopping Cart").first();
+       PlaywrightAssertions.assertThat(pageTitle).isVisible();
+       return this;
+    }
+
+    public ItemsSteps continueShopping()
+    {
+        itemsPage.proceedToCheckoutBtn.waitFor();
+        itemsPage.proceedToCheckoutBtn.click();
         return this;
     }
 }
