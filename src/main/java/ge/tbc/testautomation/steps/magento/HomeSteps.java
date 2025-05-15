@@ -15,16 +15,16 @@ import java.util.stream.IntStream;
 import static ge.tbc.testautomation.data.Constants.*;
 
 public class HomeSteps {
-     Page page;
-     HomePage homePage;
-    public  List<Locator> offersWithColors;
+    Page page;
+    HomePage homePage;
+    public List<Locator> offersWithColors;
     Random random = new Random();
     public List<Locator> randomOffers;
-    public HomeSteps(Page page)
-     {
-         this.page = page;
-         this.homePage = new HomePage(page);
-     }
+
+    public HomeSteps(Page page) {
+        this.page = page;
+        this.homePage = new HomePage(page);
+    }
 
     public HomeSteps waitForOffersToLoad() {
         homePage.allOffersInHotSeller.first().waitFor();
@@ -96,7 +96,7 @@ public class HomeSteps {
 
     public HomeSteps verifyOffersExist() {
         if (offersWithColors.isEmpty()) {
-            throw new SkipException("No offers with multiple colors to test.");
+            throw new SkipException(NO_OFFERS_WITH_THIS_COLOR);
         }
         return this;
     }
@@ -115,70 +115,59 @@ public class HomeSteps {
     }
 
 
-    public HomeSteps searchForItem(String item)
-     {
-         homePage.searchBarComboBox.fill(item);
-         page.keyboard().press(ENTER);
-         return this;
-     }
-
-     public HomeSteps clickHotSellersFirstItem()
-     {
-         homePage.hotSellerFirstProductImage.click();
-         return this;
-     }
-
-     public HomeSteps validateTopNavBarIsVisible()
-     {
-         PlaywrightAssertions.assertThat(homePage.topNavigationBar).isVisible();
+    public HomeSteps searchForItem(String item) {
+        homePage.searchBarComboBox.fill(item);
+        page.keyboard().press(ENTER);
         return this;
-     }
+    }
 
-     public HomeSteps validateSignNavLinkIsVisible()
-     {
-         PlaywrightAssertions.assertThat(homePage.signInNavLink).isVisible();
-         return this;
-     }
+    public HomeSteps clickHotSellersFirstItem() {
+        homePage.hotSellerFirstProductImage.click();
+        return this;
+    }
 
-     public HomeSteps validateCreateAnAccountLinkIsVisible()
-     {
-         PlaywrightAssertions.assertThat(homePage.createAccountNavLink).isVisible();
-         return this;
-     }
+    public HomeSteps validateTopNavBarIsVisible() {
+        PlaywrightAssertions.assertThat(homePage.topNavigationBar).isVisible();
+        return this;
+    }
 
-     public HomeSteps changeViewPortSize()
-     {
-         page.setViewportSize(WIDTH_FOR_MOBILE, HEIGHT_FOR_MOBILE);
-         return this;
-     }
+    public HomeSteps validateSignNavLinkIsVisible() {
+        PlaywrightAssertions.assertThat(homePage.signInNavLink).isVisible();
+        return this;
+    }
 
-     public HomeSteps clickNavToggleBtn()
-     {
-         homePage.navToggleButton.click();
-         return this;
-     }
+    public HomeSteps validateCreateAnAccountLinkIsVisible() {
+        PlaywrightAssertions.assertThat(homePage.createAccountNavLink).isVisible();
+        return this;
+    }
 
-     public HomeSteps clickOnMenu()
-     {
-         homePage.mobileMenuLink.waitFor();
-         homePage.mobileMenuLink.click();
-         return this;
-     }
+    public HomeSteps changeViewPortSize() {
+        page.setViewportSize(WIDTH_FOR_MOBILE, HEIGHT_FOR_MOBILE);
+        return this;
+    }
 
-     public HomeSteps validateNavBarLinksAreVisible()
-     {
-         PlaywrightAssertions.assertThat(homePage.topNavigationBar).isVisible();
-         return this;
-     }
+    public HomeSteps clickNavToggleBtn() {
+        homePage.navToggleButton.click();
+        return this;
+    }
 
-     public HomeSteps clickOnAccountLink()
-     {
-         homePage.accountMenuLink.click();
-         return this;
-     }
+    public HomeSteps clickOnMenu() {
+        homePage.mobileMenuLink.waitFor();
+        homePage.mobileMenuLink.click();
+        return this;
+    }
 
-    public HomeSteps clickSignInLink()
-    {
+    public HomeSteps validateNavBarLinksAreVisible() {
+        PlaywrightAssertions.assertThat(homePage.topNavigationBar).isVisible();
+        return this;
+    }
+
+    public HomeSteps clickOnAccountLink() {
+        homePage.accountMenuLink.click();
+        return this;
+    }
+
+    public HomeSteps clickSignInLink() {
         homePage.signInNavLink.click();
         return this;
     }

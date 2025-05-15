@@ -5,16 +5,16 @@ import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
 
 public class ShippingPage {
-   public Locator streetAddress,
-    city,
-    postalCode,
-    phoneInput,
-    shippingMethod,
-    nextBtn,
-    checkoutBtn,
-    state;
-    public ShippingPage (Page page)
-    {
+    public Locator streetAddress,
+            city,
+            postalCode,
+            phoneInput,
+            shippingMethod,
+            nextBtn,
+            checkoutBtn,
+            state;
+
+    public ShippingPage(Page page) {
         this.streetAddress = page.getByLabel("Street Address: Line 1");
         this.city = page.getByLabel("City");
         this.postalCode = page.getByLabel("Zip/Postal Code");

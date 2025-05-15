@@ -6,6 +6,8 @@ import com.microsoft.playwright.assertions.PlaywrightAssertions;
 import ge.tbc.testautomation.pages.magento.PaymentPage;
 import org.testng.asserts.SoftAssert;
 
+import static ge.tbc.testautomation.data.Constants.THE_COUPON_CODE_IS_NOT_VALID;
+
 public class PaymentSteps {
     Page page;
     PaymentPage paymentPage;
@@ -13,65 +15,56 @@ public class PaymentSteps {
     Faker faker;
     private double cartSubtotal,
             shippingSubtotal,
-           totalPrice;
+            totalPrice;
 
-    public PaymentSteps(Page page)
-    {
+    public PaymentSteps(Page page) {
         this.page = page;
         this.paymentPage = new PaymentPage(page);
         this.softAssert = new SoftAssert();
         this.faker = new Faker();
     }
 
-    public PaymentSteps retrieveCartSubtotal()
-    {
+    public PaymentSteps retrieveCartSubtotal() {
         String cartSubtotal = paymentPage.cartSubtotal.textContent().replaceAll("[^0-9.]", "").trim();
         this.cartSubtotal = Double.parseDouble(cartSubtotal);
         return this;
     }
 
-    public double getCartSubtotal()
-    {
+    public double getCartSubtotal() {
         return this.cartSubtotal;
     }
 
-    public double getShippingSubtotal()
-    {
+    public double getShippingSubtotal() {
         return this.shippingSubtotal;
     }
 
-    public double getTotalPrice()
-    {
+    public double getTotalPrice() {
         return this.totalPrice;
     }
 
-    public PaymentSteps retrieveShippingPrice()
-    {
+    public PaymentSteps retrieveShippingPrice() {
         String shippingSubtotal = paymentPage.shippingPrice.textContent().replaceAll("[^0-9.]", "").trim();
         this.shippingSubtotal = Double.parseDouble(shippingSubtotal);
         return this;
     }
 
-    public PaymentSteps retrieveTotalPrice()
-    {
+    public PaymentSteps retrieveTotalPrice() {
         String totalPrice = paymentPage.totalPrice.textContent().replaceAll("[^0-9.]", "").trim();
         this.totalPrice = Double.parseDouble(totalPrice);
         return this;
     }
 
-    public PaymentSteps validateShippingIsAddedCorrectly()
-    {
+    public PaymentSteps validateShippingIsAddedCorrectly() {
         softAssert.assertEquals(getCartSubtotal() + getShippingSubtotal(), getTotalPrice());
         return this;
     }
 
-    public PaymentSteps validateShippingContentIsDisplayedCorrectly()
-    {
+    public PaymentSteps validateShippingContentIsDisplayedCorrectly() {
         PlaywrightAssertions.assertThat(paymentPage.shippingContent).isVisible();
         return this;
     }
-    public PaymentSteps clickToApplyDiscountCode()
-    {
+
+    public PaymentSteps clickToApplyDiscountCode() {
         paymentPage.discountCodeLink.waitFor();
         paymentPage.discountCodeLink.click();
         return this;
@@ -83,27 +76,24 @@ public class PaymentSteps {
         return this;
     }
 
-    public PaymentSteps clickPlaceOrder()
-    {
+    public PaymentSteps clickPlaceOrder() {
         paymentPage.placeOrder.click();
         return this;
     }
 
-    public PaymentSteps clickApplyDiscountBtn()
-    {
+    public PaymentSteps clickApplyDiscountBtn() {
         paymentPage.discountBtn.click();
         return this;
     }
 
-    public PaymentSteps waitErrorMessageToAppear()
-    {
+    public PaymentSteps waitErrorMessageToAppear() {
         paymentPage.alert.waitFor();
         return this;
     }
 
     public PaymentSteps validateErrorMessage() {
         PlaywrightAssertions.assertThat(paymentPage.alert)
-                .containsText("The coupon code isn't valid. Verify the code and try again.");
+                .containsText(THE_COUPON_CODE_IS_NOT_VALID);
         return this;
     }
 }

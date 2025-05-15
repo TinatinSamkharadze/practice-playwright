@@ -18,16 +18,14 @@ public class ItemsSteps {
     private double productPriceValue;
     private String productItemName;
     private String productItemPrice;
-   private  int expectedReviewCount;
+    private int expectedReviewCount;
 
-    public ItemsSteps(Page page)
-    {
+    public ItemsSteps(Page page) {
         this.page = page;
         this.itemsPage = new ItemsPage(page);
     }
 
-    public ItemsSteps waitUntilStockStatusLabelBecomesVisible()
-    {
+    public ItemsSteps waitUntilStockStatusLabelBecomesVisible() {
         itemsPage.stockStatusLabel.waitFor();
         return this;
     }
@@ -42,170 +40,144 @@ public class ItemsSteps {
     }
 
 
-    public ItemsSteps getProductPriceValue()
-    {
+    public ItemsSteps getProductPriceValue() {
         this.productPriceValue = Double.parseDouble(itemsPage.productPriceOnDetailsPage.textContent().replaceAll("[^0-9.]", "").trim());
         return this;
     }
 
-    public double getProductPrice()
-    {
+    public double getProductPrice() {
         return this.productPriceValue;
     }
 
-    public ItemsSteps chooseSize()
-    {
+    public ItemsSteps chooseSize() {
         itemsPage.sizeOptionXS.waitFor();
         itemsPage.sizeOptionXS.click();
         return this;
     }
 
-    public ItemsSteps chooseColor()
-    {
+    public ItemsSteps chooseColor() {
         itemsPage.colorOptionBlue.click();
         return this;
     }
 
-    public ItemsSteps scrollToAddToCartBtn()
-    {
+    public ItemsSteps scrollToAddToCartBtn() {
         Locator cartBtn = itemsPage.addToCartBtn;
         cartBtn.scrollIntoViewIfNeeded();
         return this;
     }
-    public ItemsSteps goToCheckout()
-    {
-       Locator checkoutBtn = itemsPage.checkout;
-       checkoutBtn.waitFor();
-       checkoutBtn.click();
+
+    public ItemsSteps goToCheckout() {
+        Locator checkoutBtn = itemsPage.checkout;
+        checkoutBtn.waitFor();
+        checkoutBtn.click();
         return this;
     }
 
-    public ItemsSteps validateCartSuccessMessageIsVisible()
-    {
-       Locator cartSuccessMessage =  itemsPage.cartSuccessMsg;
-       cartSuccessMessage.waitFor();
+    public ItemsSteps validateCartSuccessMessageIsVisible() {
+        Locator cartSuccessMessage = itemsPage.cartSuccessMsg;
+        cartSuccessMessage.waitFor();
         Assert.assertTrue(cartSuccessMessage.isVisible());
         return this;
     }
 
-    public ItemsSteps clickOnMyCartBtn()
-    {
+    public ItemsSteps clickOnMyCartBtn() {
         itemsPage.myCartLink.waitFor();
-       itemsPage.myCartLink.click();
+        itemsPage.myCartLink.click();
         return this;
     }
 
-    public ItemsSteps getProductItemName()
-    {
+    public ItemsSteps getProductItemName() {
         this.productItemName = itemsPage.cartProductName.textContent().replaceAll("[^A-Za-z]", "");
         return this;
     }
 
-    public String getProductItemNameText()
-    {
+    public String getProductItemNameText() {
         return this.productItemName;
     }
 
-    public ItemsSteps getProductItemPrice()
-    {
+    public ItemsSteps getProductItemPrice() {
         this.productItemPrice = itemsPage.cartPriceInfo.textContent().replaceAll("[^0-9.]", "").trim();
         return this;
     }
 
-    public double getProductItemPriceValue()
-    {
+    public double getProductItemPriceValue() {
         double cartPriceValue = Double.parseDouble(productItemPrice);
-       return cartPriceValue;
+        return cartPriceValue;
     }
 
-    public ItemsSteps validateItemPricesAreSame()
-    {
+    public ItemsSteps validateItemPricesAreSame() {
         softAssert.assertEquals(getProductPrice(), getProductItemPriceValue());
         return this;
     }
 
-    public ItemsSteps validateItemNamesAreSame()
-    {
+    public ItemsSteps validateItemNamesAreSame() {
         softAssert.assertEquals(getProductTitleText(), getProductItemNameText());
         return this;
     }
 
-    public ItemsSteps clickRemoveItemBtn()
-    {
-       itemsPage.removeItemBtn.click();
-       return this;
+    public ItemsSteps clickRemoveItemBtn() {
+        itemsPage.removeItemBtn.click();
+        return this;
     }
 
-    public ItemsSteps clickConfirmRemovalBtn()
-    {
+    public ItemsSteps clickConfirmRemovalBtn() {
         itemsPage.confirmRemovalButton.click();
         return this;
     }
 
-    public ItemsSteps validateCartIsEmpty()
-    {
+    public ItemsSteps validateCartIsEmpty() {
         PlaywrightAssertions.assertThat(itemsPage.emptyCartMessage).containsText(NO_ITEMS_IN_SHOPPING_CART);
-       return this;
+        return this;
     }
 
-    public ItemsSteps validateQuantityErrorMessage()
-    {
+    public ItemsSteps validateQuantityErrorMessage() {
         Locator quantityErrorMessage = itemsPage.quantityErrorMsg;
         quantityErrorMessage.waitFor();
         PlaywrightAssertions.assertThat(quantityErrorMessage).containsText(REQUESTED_QTY_IS_NOT_AVAILABLE);
         return this;
     }
 
-    public ItemsSteps getNumberOfReviews()
-    {
+    public ItemsSteps getNumberOfReviews() {
         itemsPage.reviewsSummaryLink.waitFor();
         this.expectedReviewCount = Integer.parseInt(itemsPage.reviewsSummaryLink.textContent().replaceAll("[^0-9.]", ""));
         return this;
 
     }
 
-    public int getExpectedReviewCount()
-    {
+    public int getExpectedReviewCount() {
         return this.expectedReviewCount;
     }
 
-    public ItemsSteps goToReviewsPage()
-    {
+    public ItemsSteps goToReviewsPage() {
         itemsPage.reviewsSummaryLink.first().click();
         return this;
     }
 
-    public ItemsSteps clickAddToWishlistButton()
-    {
+    public ItemsSteps clickAddToWishlistButton() {
         itemsPage.addToWishlistButton.waitFor();
         itemsPage.addToWishlistButton.click();
         return this;
     }
 
-    public ItemsSteps validateWishlistErrorMsgIsVisible()
-    {
+    public ItemsSteps validateWishlistErrorMsgIsVisible() {
         Locator wishlistErrorMsg = itemsPage.wishlistAlertMessage;
         wishlistErrorMsg.waitFor();
         PlaywrightAssertions.assertThat(wishlistErrorMsg).isVisible();
         return this;
     }
 
-    public ItemsSteps clickCreateAnAccountBtn()
-    {
+    public ItemsSteps clickCreateAnAccountBtn() {
         itemsPage.createAccountButton.waitFor();
         itemsPage.createAccountButton.click();
         return this;
     }
 
-    public ItemsSteps validateWeAreInShoppingCart()
-    {
-       Locator pageTitle = page.getByText("Shopping Cart").first();
-       PlaywrightAssertions.assertThat(pageTitle).isVisible();
-       return this;
+    public ItemsSteps validateWeAreInShoppingCart() {
+        PlaywrightAssertions.assertThat(itemsPage.pageTitle).isVisible();
+        return this;
     }
 
-    public ItemsSteps continueShopping()
-    {
+    public ItemsSteps continueShopping() {
         itemsPage.proceedToCheckoutBtn.waitFor();
         itemsPage.proceedToCheckoutBtn.click();
         return this;

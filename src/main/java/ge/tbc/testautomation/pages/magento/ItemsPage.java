@@ -5,27 +5,28 @@ import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
 
 public class ItemsPage {
-    public Locator productTitleHeader;
-    public Locator addToWishlistButton;
-    public Locator wishlistAlertMessage;
-    public Locator stockStatusLabel;
-    public Locator productPriceOnDetailsPage;
-    public Locator sizeOptionXS;
-    public Locator colorOptionBlue;
-    public Locator addToCartBtn;
-    public Locator cartSuccessMsg;
-    public Locator myCartLink;
-    public Locator cartProductName;
-    public Locator cartPriceInfo;
-    public Locator removeItemBtn;
-    public Locator confirmRemovalButton;
-    public Locator emptyCartMessage;
-    public Locator quantityErrorMsg;
-    public Locator reviewCountLink;
-    public Locator reviewsSummaryLink;
-    public Locator createAccountButton,
-    proceedToCheckoutBtn,
-    checkout;
+    public Locator productTitleHeader,
+            addToWishlistButton,
+            wishlistAlertMessage,
+            stockStatusLabel,
+            productPriceOnDetailsPage,
+            sizeOptionXS,
+            colorOptionBlue,
+            addToCartBtn,
+            cartSuccessMsg,
+            myCartLink,
+            cartProductName,
+            cartPriceInfo,
+            removeItemBtn,
+            confirmRemovalButton,
+            emptyCartMessage,
+            quantityErrorMsg,
+            reviewCountLink,
+            reviewsSummaryLink,
+            createAccountButton,
+            proceedToCheckoutBtn,
+            checkout,
+            pageTitle;
 
 
     public ItemsPage(Page page) {
@@ -51,5 +52,6 @@ public class ItemsPage {
         this.productPriceOnDetailsPage = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Proceed to Checkout"));
         this.checkout = page.locator(".action.tocart.primary").last();
         this.proceedToCheckoutBtn = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Proceed to Checkout"));
+        this.pageTitle = page.getByText("Shopping Cart").first();
     }
 }

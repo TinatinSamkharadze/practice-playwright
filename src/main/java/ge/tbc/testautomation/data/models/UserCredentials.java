@@ -1,4 +1,4 @@
-package ge.tbc.testautomation.data.modles;
+package ge.tbc.testautomation.data.models;
 
 public class UserCredentials {
     public String email;

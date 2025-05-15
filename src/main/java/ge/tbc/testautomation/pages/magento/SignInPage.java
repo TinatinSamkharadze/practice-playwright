@@ -8,8 +8,8 @@ public class SignInPage {
             password,
             signIn,
             pageTitle;
-    public SignInPage(Page page)
-    {
+
+    public SignInPage(Page page) {
         this.email = page.locator("#email");
         this.password = page.locator("#pass").first();
         this.signIn = page.locator(".action.login.primary");

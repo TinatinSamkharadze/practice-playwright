@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="PlaywrightCrossBrowserSuite" parallel="tests" thread-count="6">
+
+    <test name="Magento Chrome">
+        <parameter name="browserType" value="chromium"/>
+        <classes>
+            <class name="ge.tbc.testautomation.pom.magento.MagentoTests"/>
+        </classes>
+    </test>
+
+    <test name="Magento Safari">
+        <parameter name="browserType" value="safari"/>
+        <classes>
+            <class name="ge.tbc.testautomation.pom.magento.MagentoTests"/>
+        </classes>
+    </test>
+
+    <test name="SharedContext Chrome">
+        <parameter name="browserType" value="chromium"/>
+        <classes>
+            <class name="ge.tbc.testautomation.pom.toolwebsite.sharedcontext.SharedContextTests"/>
+        </classes>
+    </test>
+
+    <test name="SharedContext Safari">
+        <parameter name="browserType" value="safari"/>
+        <classes>
+            <class name="ge.tbc.testautomation.pom.toolwebsite.sharedcontext.SharedContextTests"/>
+        </classes>
+    </test>
+
+    <test name="IsolatedContext Chrome">
+        <parameter name="browserType" value="chromium"/>
+        <classes>
+            <class name="ge.tbc.testautomation.pom.toolwebsite.isolatedcontext.IsolatedContextTests"/>
+        </classes>
+    </test>
+
+    <test name="IsolatedContext Safari">
+        <parameter name="browserType" value="safari"/>
+        <classes>
+            <class name="ge.tbc.testautomation.pom.toolwebsite.isolatedcontext.IsolatedContextTests"/>
+        </classes>
+    </test>
+
+</suite>

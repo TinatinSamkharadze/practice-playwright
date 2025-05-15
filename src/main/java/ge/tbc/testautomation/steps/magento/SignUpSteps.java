@@ -2,7 +2,7 @@ package ge.tbc.testautomation.steps.magento;
 
 import com.github.javafaker.Faker;
 import com.microsoft.playwright.Page;
-import ge.tbc.testautomation.data.modles.UserCredentials;
+import ge.tbc.testautomation.data.models.UserCredentials;
 import ge.tbc.testautomation.pages.magento.SignUpPage;
 
 public class SignUpSteps {

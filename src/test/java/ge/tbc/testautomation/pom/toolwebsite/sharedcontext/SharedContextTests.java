@@ -1,62 +1,9 @@
-package ge.tbc.testautomation.pom;
+package ge.tbc.testautomation.pom.toolwebsite.sharedcontext;
 
-import com.microsoft.playwright.*;
-import ge.tbc.testautomation.steps.toowebsite.*;
-import ge.tbc.testautomation.util.TestUser;
-import ge.tbc.testautomation.util.TestUserFactory;
-import org.testng.annotations.*;
+import org.testng.annotations.Test;
 
-import static ge.tbc.testautomation.data.Constants.PRACTICE_SOFTWARE_TESTING_URL;
+public class SharedContextTests extends SharedBaseTest{
 
-public class ToolWebsiteTestsWithPom {
-
-    private Playwright playwright;
-    private Browser browser;
-    private BrowserContext browserContext;
-    private Page page;
-    SignInSteps signInSteps;
-    AccountSteps accountSteps;
-    HomeSteps homeSteps;
-   ProductSteps productSteps;
-    private TestUser testUser;
-    FavouritesSteps favouritesSteps;
-
-
-    @BeforeClass
-    public void setup() {
-        playwright = Playwright.create();
-        browser = playwright.chromium().launch(
-                new BrowserType.LaunchOptions().setHeadless(false)
-        );
-        browserContext = browser.newContext();
-        testUser = TestUserFactory.registerNewUser(browserContext);
-    }
-
-    @BeforeMethod
-    public void testSetup() {
-        page = browserContext.newPage();
-        this.signInSteps = new SignInSteps(page);
-        this.accountSteps = new AccountSteps(page);
-        this.homeSteps = new HomeSteps(page);
-        this.productSteps = new ProductSteps(page);
-        this.favouritesSteps = new FavouritesSteps(page);
-        page.navigate(PRACTICE_SOFTWARE_TESTING_URL);
-
-    }
-
-    @AfterMethod
-    public void cleanupPage() {
-        if (page != null) {
-            page.close();
-        }
-    }
-
-    @AfterClass
-    public void tearDown() {
-        if (browserContext != null) browserContext.close();
-        if (browser != null) browser.close();
-        if (playwright != null) playwright.close();
-    }
 
     @Test(priority = 1)
     public void favouritesTest() {

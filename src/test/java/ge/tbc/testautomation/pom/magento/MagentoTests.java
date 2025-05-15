@@ -1,40 +1,10 @@
-package ge.tbc.testautomation.pom;
+package ge.tbc.testautomation.pom.magento;
 
-import ge.tbc.testautomation.BaseTest;
-import ge.tbc.testautomation.steps.magento.*;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static ge.tbc.testautomation.data.Constants.*;
+import static ge.tbc.testautomation.data.Constants.TEE;
 
-public class MagentoTestsWithPOM extends BaseTest {
-   public HomeSteps homeSteps;
-   public SearchResultsSteps searchResultsSteps;
-   public ItemsSteps itemsSteps;
-   public ReviewsSteps reviewsSteps;
-   public SignUpSteps signUpSteps;
-   public WishlistSteps wishlistSteps;
-    public SignInSteps signInSteps;
-    public MyAccountSteps myAccountSteps;
-    public ShippingSteps shippingSteps;
-    public PaymentSteps paymentSteps;
-    public SuccessSteps successSteps;
-
-    @BeforeMethod
-    public void resetContext() {
-        homeSteps = new HomeSteps(page);
-        searchResultsSteps = new SearchResultsSteps(page);
-        itemsSteps = new ItemsSteps(page);
-        reviewsSteps = new ReviewsSteps(page);
-        signUpSteps = new SignUpSteps(page);
-        wishlistSteps = new WishlistSteps(page);
-        page.navigate(MAGENTO_URL);
-        this.signInSteps = new SignInSteps(page);
-        this.myAccountSteps = new MyAccountSteps(page);
-        this.shippingSteps = new ShippingSteps(page);
-        this.paymentSteps = new PaymentSteps(page);
-        this.successSteps = new SuccessSteps(page);
-    }
+public class MagentoTests extends BaseTest {
 
     @Test(priority = 1)
     public void colorChangeTest() {
@@ -124,8 +94,8 @@ public class MagentoTestsWithPOM extends BaseTest {
 
     @Test(priority = 7)
     public void saveToFavoritesWhileUnauthorizedTest() {
-        page.setViewportSize(WIDTH_FOR_DESKTOP, HEIGHT_FOR_DESKTOP);
         homeSteps
+                .setViewPortSizeForDesktop()
                 .searchForItem(TEE);
         searchResultsSteps
                 .locateFirstSearchResult()

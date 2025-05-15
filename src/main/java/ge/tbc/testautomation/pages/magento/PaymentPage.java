@@ -6,16 +6,16 @@ import com.microsoft.playwright.options.AriaRole;
 
 public class PaymentPage {
     public Locator cartSubtotal,
-    shippingPrice,
-    totalPrice,
-    discountCodeLink,
-    discountCodeField,
-    discountBtn,
+            shippingPrice,
+            totalPrice,
+            discountCodeLink,
+            discountCodeField,
+            discountBtn,
             alert,
-    shippingContent,
-    placeOrder;
-    public PaymentPage (Page page)
-    {
+            shippingContent,
+            placeOrder;
+
+    public PaymentPage(Page page) {
         this.cartSubtotal = page.locator(".amount").first();
         this.shippingPrice = page.locator(".totals.shipping.excl");
         this.totalPrice = page.locator(".grand.totals");

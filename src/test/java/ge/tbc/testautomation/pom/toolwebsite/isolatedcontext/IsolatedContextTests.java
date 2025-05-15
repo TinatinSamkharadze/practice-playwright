@@ -1,64 +1,9 @@
-package ge.tbc.testautomation.pom;
+package ge.tbc.testautomation.pom.toolwebsite.isolatedcontext;
 
-import com.microsoft.playwright.*;
-import ge.tbc.testautomation.steps.toowebsite.AccountSteps;
-import ge.tbc.testautomation.steps.toowebsite.FavouritesSteps;
-import ge.tbc.testautomation.steps.toowebsite.ProductSteps;
-import ge.tbc.testautomation.steps.toowebsite.SignInSteps;
-import ge.tbc.testautomation.steps.toowebsite.HomeSteps;
-import ge.tbc.testautomation.util.TestUser;
-import ge.tbc.testautomation.util.TestUserFactory;
-import org.testng.annotations.*;
+import org.testng.annotations.Test;
 
-import static ge.tbc.testautomation.data.Constants.PRACTICE_SOFTWARE_TESTING_URL;
+public class IsolatedContextTests extends IsolatedBaseTest {
 
-public class ToolWebsiteIsolatedTestsWithPom {
-    private Playwright playwright;
-    private Browser browser;
-    private BrowserContext browserContext;
-    private Page page;
-    private TestUser testUser;
-
-    SignInSteps signInSteps;
-    AccountSteps accountSteps;
-    HomeSteps homeSteps;
-    ProductSteps productSteps;
-    FavouritesSteps favouritesSteps;
-
-    @BeforeClass
-    public void setupPlaywrightAndBrowser() {
-        playwright = Playwright.create();
-        browser = playwright.chromium().launch(
-                new BrowserType.LaunchOptions().setHeadless(false)
-        );
-    }
-
-    @BeforeMethod
-    public void testSetup() {
-        browserContext = browser.newContext();
-        testUser = TestUserFactory.registerNewUser(browserContext);
-        page = browserContext.newPage();
-
-        this.signInSteps = new SignInSteps(page);
-        this.accountSteps = new AccountSteps(page);
-        this.homeSteps = new HomeSteps(page);
-        this.productSteps = new ProductSteps(page);
-        this.favouritesSteps = new FavouritesSteps(page);
-
-        page.navigate(PRACTICE_SOFTWARE_TESTING_URL);
-    }
-
-    @AfterMethod
-    public void cleanup() {
-        if (page != null) page.close();
-        if (browserContext != null) browserContext.close();
-    }
-
-    @AfterClass
-    public void tearDown() {
-        if (browser != null) browser.close();
-        if (playwright != null) playwright.close();
-    }
     @Test(priority = 1)
     public void favouritesTest() {
         accountSteps
