@@ -15,7 +15,7 @@ public class ItemsSteps {
     Page page;
     ItemsPage itemsPage;
     private String productTitleText;
-    private double productPriceValue;
+    private String productPriceValue;
     private String productItemName;
     private String productItemPrice;
     private int expectedReviewCount;
@@ -41,11 +41,11 @@ public class ItemsSteps {
 
 
     public ItemsSteps getProductPriceValue() {
-        this.productPriceValue = Double.parseDouble(itemsPage.productPriceOnDetailsPage.textContent().replaceAll("[^0-9.]", "").trim());
+        this.productPriceValue = itemsPage.productPriceOnDetailsPage.textContent().replaceAll("[^0-9.]", "").trim();
         return this;
     }
 
-    public double getProductPrice() {
+    public String getProductPrice() {
         return this.productPriceValue;
     }
 
@@ -96,7 +96,7 @@ public class ItemsSteps {
     }
 
     public ItemsSteps getProductItemPrice() {
-        this.productItemPrice = itemsPage.cartPriceInfo.textContent().replaceAll("[^0-9.]", "").trim();
+        itemsPage.cartPriceInfo.textContent().replaceAll("[^0-9.]", "").trim();
         return this;
     }
 
@@ -149,6 +149,7 @@ public class ItemsSteps {
     }
 
     public ItemsSteps goToReviewsPage() {
+        itemsPage.reviewsSummaryLink.waitFor();
         itemsPage.reviewsSummaryLink.first().click();
         return this;
     }

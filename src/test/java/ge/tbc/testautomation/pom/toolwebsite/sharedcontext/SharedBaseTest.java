@@ -10,7 +10,7 @@ import org.testng.asserts.SoftAssert;
 import java.util.Arrays;
 
 import static ge.tbc.testautomation.data.Constants.PRACTICE_SOFTWARE_TESTING_URL;
-
+@Listeners({io.qameta.allure.testng.AllureTestNg.class})
 public class SharedBaseTest {
     public SoftAssert softAssert;
     public Playwright playwright;
@@ -31,7 +31,7 @@ public class SharedBaseTest {
         playwright = Playwright.create();
         BrowserType.LaunchOptions launchOptions = new BrowserType.LaunchOptions();
         launchOptions.setArgs(Arrays.asList("--disable-gpu", "--disable-extensions", "--start-maximized"));
-        launchOptions.setHeadless(true);
+        launchOptions.setHeadless(false);
 
         if (browserType.equalsIgnoreCase("chromium")) {
             browser = playwright.chromium().launch(launchOptions);

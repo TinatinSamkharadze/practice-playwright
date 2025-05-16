@@ -1,0 +1,6 @@
+ge\tbc\testautomation\pom\toolwebsite\isolatedcontext\IsolatedContextTests.class
+ge\tbc\testautomation\pom\toolwebsite\isolatedcontext\IsolatedBaseTest.class
+ge\tbc\testautomation\pom\magento\BaseTest.class
+ge\tbc\testautomation\pom\toolwebsite\sharedcontext\SharedContextTests.class
+ge\tbc\testautomation\pom\toolwebsite\sharedcontext\SharedBaseTest.class
+ge\tbc\testautomation\pom\magento\MagentoTests.class

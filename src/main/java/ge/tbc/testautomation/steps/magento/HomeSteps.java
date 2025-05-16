@@ -4,6 +4,7 @@ import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.assertions.PlaywrightAssertions;
 import ge.tbc.testautomation.pages.magento.HomePage;
+import io.qameta.allure.Step;
 import org.testng.SkipException;
 
 import java.util.List;
@@ -26,11 +27,13 @@ public class HomeSteps {
         this.homePage = new HomePage(page);
     }
 
+    @Step("Wait for offers to load")
     public HomeSteps waitForOffersToLoad() {
         homePage.allOffersInHotSeller.first().waitFor();
         return this;
     }
 
+    @Step("Locate all offers which colors can be changed")
     public HomeSteps locateAllOffersWhichColorsCanBeChanged() {
         Locator allOffers = homePage.allOffersInHotSeller;
         offersWithColors = IntStream.range(0, allOffers.count())
@@ -40,7 +43,7 @@ public class HomeSteps {
         return this;
     }
 
-
+    @Step("Choose random three offers")
     public HomeSteps chooseRandomThreeOffers() {
         int offerCount = offersWithColors.size();
         randomOffers = IntStream.generate(() -> random.nextInt(offerCount))
@@ -93,7 +96,7 @@ public class HomeSteps {
         PlaywrightAssertions.assertThat(productImage).hasAttribute("src", colorPattern);
         return this;
     }
-
+    @Step("Verify offers exist")
     public HomeSteps verifyOffersExist() {
         if (offersWithColors.isEmpty()) {
             throw new SkipException(NO_OFFERS_WITH_THIS_COLOR);
@@ -101,6 +104,7 @@ public class HomeSteps {
         return this;
     }
 
+    @Step("Verify color changes reflect on image")
     public HomeSteps verifyColorChangesReflectOnImage() {
         for (Locator offer : randomOffers) {
             scrollToOffer(offer);
@@ -121,6 +125,7 @@ public class HomeSteps {
         return this;
     }
 
+    @Step("Click on the first item in hot sellers")
     public HomeSteps clickHotSellersFirstItem() {
         homePage.hotSellerFirstProductImage.click();
         return this;
@@ -172,4 +177,9 @@ public class HomeSteps {
         return this;
     }
 
+    public HomeSteps setViewPortSizeForDesktop()
+    {
+        page.setViewportSize(WIDTH_FOR_DESKTOP, HEIGHT_FOR_DESKTOP);
+        return this;
+    }
 }

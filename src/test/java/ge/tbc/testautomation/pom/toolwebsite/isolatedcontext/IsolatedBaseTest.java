@@ -31,7 +31,7 @@ public class IsolatedBaseTest {
         playwright = Playwright.create();
         BrowserType.LaunchOptions launchOptions = new BrowserType.LaunchOptions();
         launchOptions.setArgs(Arrays.asList("--disable-gpu", "--disable-extensions", "--start-maximized"));
-        launchOptions.setHeadless(true);
+        launchOptions.setHeadless(false);
 
         if (browserType.equalsIgnoreCase("chromium")){
             browser = playwright.chromium().launch(launchOptions);
