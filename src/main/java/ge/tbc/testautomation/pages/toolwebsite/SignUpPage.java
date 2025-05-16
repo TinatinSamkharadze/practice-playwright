@@ -5,18 +5,18 @@ import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
 
 public class SignUpPage {
-    public Locator firstNameInput;
-    public Locator lastNameInput;
-    public Locator dateOfBirthInput;
-    public Locator streetInput;
-    public Locator postcodeInput;
-    public Locator cityInput;
-    public Locator stateInput;
-    public Locator countrySelect;
-    public Locator phoneInput;
-    public Locator emailInput;
-    public Locator passwordInput;
-    public Locator registerButton;
+    public Locator firstNameInput,
+            lastNameInput,
+            dateOfBirthInput,
+            streetInput,
+            postcodeInput,
+            cityInput,
+            stateInput,
+            countrySelect,
+            phoneInput,
+            emailInput,
+            passwordInput,
+            registerButton;
 
 
     public SignUpPage(Page page) {

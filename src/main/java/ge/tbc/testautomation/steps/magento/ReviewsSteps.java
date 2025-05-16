@@ -11,32 +11,29 @@ public class ReviewsSteps {
     private int actualReviewCount;
     ItemsSteps itemsSteps;
 
-    public ReviewsSteps (Page page)
-    {
+    public ReviewsSteps(Page page) {
         this.page = page;
         this.reviewsPage = new ReviewsPage(page);
         this.itemsSteps = new ItemsSteps(page);
     }
 
-    public ReviewsSteps countHowManyReviewsAreThere()
-    {
+    public ReviewsSteps countHowManyReviewsAreThere() {
         Locator numberOfReviews = reviewsPage.reviewItems;
         numberOfReviews.first().waitFor();
         this.actualReviewCount = numberOfReviews.count();
         return this;
     }
 
-    public int getActualReviewCount()
-    {
+    public int getActualReviewCount() {
         return this.actualReviewCount;
     }
-    public ReviewsSteps waitForReviewsToAppear()
-    {
+
+    public ReviewsSteps waitForReviewsToAppear() {
         reviewsPage.reviewItems.first().waitFor();
         return this;
     }
-    public ReviewsSteps validateNumberOfReviewsAreTheSame()
-    {
+
+    public ReviewsSteps validateNumberOfReviewsAreTheSame() {
 
         Assert.assertEquals(itemsSteps.getExpectedReviewCount(), getActualReviewCount());
         return this;

@@ -31,7 +31,7 @@ public class FavouritesSteps {
 
     public FavouritesSteps validateThereAreNoProductsInFavourites()
     {
-        Assert.assertTrue(actualText.contains(THERE_ARE_NO_FAVOURITES));
+        Assert.assertTrue(getActualText().contains(THERE_ARE_NO_FAVOURITES));
         return this;
     }
 

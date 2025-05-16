@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "https://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="https://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+<title>TestNG Report</title>
+<style type="text/css">table {margin-bottom:10px;border-collapse:collapse;empty-cells:show}th,td {border:1px solid #009;padding:.25em .5em}th {vertical-align:bottom}td {vertical-align:top}table a {font-weight:bold}.stripe td {background-color: #E6EBF9}.num {text-align:right}.passedodd td {background-color: #3F3}.passedeven td {background-color: #0A0}.skippedodd td {background-color: #DDD}.skippedeven td {background-color: #CCC}.failedodd td,.attn {background-color: #F33}.failedeven td,.stripe .attn {background-color: #D00}.stacktrace {white-space:pre;font-family:monospace}.totop {font-size:85%;text-align:center;border-bottom:2px solid #000}.invisible {display:none}</style>
+</head>
+<body>
+<table>
+<tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
+<tr><th colspan="8">Surefire suite</th></tr>
+<tr><td><a href="#t0">Surefire test</a></td><td class="num">15</td><td class="num">0</td><td class="num attn">2</td><td class="num attn">1</td><td class="num">234,600</td><td></td><td></td></tr>
+</table>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Surefire suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Surefire test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">ge.tbc.testautomation.pom.magento.MagentoTests</td><td><a href="#m0">purchaseItem</a></td><td rowspan="1">1747347230747</td><td rowspan="1">35096</td></tr><tr><th colspan="4">Surefire test &#8212; retried</th></tr><tr class="retriedeven"><td rowspan="2">ge.tbc.testautomation.pom.magento.MagentoTests</td><td><a href="#m1">purchaseItem</a></td><td rowspan="2">1747347192869</td><td rowspan="2">36198</td></tr><tr class="retriedeven"><td><a href="#m2">purchaseItem</a></td></tr><tr><th colspan="4">Surefire test &#8212; passed</th></tr><tr class="passedeven"><td rowspan="7">ge.tbc.testautomation.pom.magento.MagentoTests</td><td><a href="#m3">addToCartTest</a></td><td rowspan="1">1747347108325</td><td rowspan="1">12470</td></tr><tr class="passedeven"><td><a href="#m4">colorChangeTest</a></td><td rowspan="1">1747347102753</td><td rowspan="1">3733</td></tr><tr class="passedeven"><td><a href="#m5">deleteFromCart</a></td><td rowspan="1">1747347121682</td><td rowspan="1">4003</td></tr><tr class="passedeven"><td><a href="#m6">mobileNavigationTest</a></td><td rowspan="1">1747347134964</td><td rowspan="1">562</td></tr><tr class="passedeven"><td><a href="#m7">outOfStockOfferTest</a></td><td rowspan="1">1747347126902</td><td rowspan="1">3674</td></tr><tr class="passedeven"><td><a href="#m8">reviewNumberTest</a></td><td rowspan="1">1747347131348</td><td rowspan="1">2677</td></tr><tr class="passedeven"><td><a href="#m9">saveToFavoritesWhileUnauthorizedTest</a></td><td rowspan="1">1747347136557</td><td rowspan="1">10752</td></tr><tr class="passedodd"><td rowspan="4">ge.tbc.testautomation.pom.toolwebsite.isolatedcontext.IsolatedContextTests</td><td><a href="#m10">TagsTest</a></td><td rowspan="1">1747347301014</td><td rowspan="1">1797</td></tr><tr class="passedodd"><td><a href="#m11">favouritesTest</a></td><td rowspan="1">1747347270322</td><td rowspan="1">12541</td></tr><tr class="passedodd"><td><a href="#m12">filterTest</a></td><td rowspan="1">1747347285995</td><td rowspan="1">1034</td></tr><tr class="passedodd"><td><a href="#m13">removeFavouriteTest</a></td><td rowspan="1">1747347289993</td><td rowspan="1">8079</td></tr><tr class="passedeven"><td rowspan="4">ge.tbc.testautomation.pom.toolwebsite.sharedcontext.SharedContextTests</td><td><a href="#m14">TagsTest</a></td><td rowspan="1">1747347324810</td><td rowspan="1">1786</td></tr><tr class="passedeven"><td><a href="#m15">favouritesTest</a></td><td rowspan="1">1747347306745</td><td rowspan="1">12286</td></tr><tr class="passedeven"><td><a href="#m16">filterTest</a></td><td rowspan="1">1747347319403</td><td rowspan="1">1076</td></tr><tr class="passedeven"><td><a href="#m17">removeFavouriteTest</a></td><td rowspan="1">1747347320907</td><td rowspan="1">3498</td></tr></tbody>
+</table>
+<h2>Surefire test</h2><h3 id="m0">ge.tbc.testautomation.pom.magento.MagentoTests#purchaseItem</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">com.microsoft.playwright.TimeoutError: Error {
+  message=&apos;Timeout 30000ms exceeded.
+  name=&apos;TimeoutError
+  stack=&apos;TimeoutError: Timeout 30000ms exceeded.
+    at ProgressController.run (C:\Users\gstore\AppData\Local\Temp\playwright-java-4435475597216201590\package\lib\server\progress.js:76:26)
+    at Frame.waitForSelector (C:\Users\gstore\AppData\Local\Temp\playwright-java-4435475597216201590\package\lib\server\frames.js:647:23)
+    at FrameDispatcher.waitForSelector (C:\Users\gstore\AppData\Local\Temp\playwright-java-4435475597216201590\package\lib\server\dispatchers\frameDispatcher.js:82:116)
+    at FrameDispatcher._handleCommand (C:\Users\gstore\AppData\Local\Temp\playwright-java-4435475597216201590\package\lib\server\dispatchers\dispatcher.js:94:40)
+    at DispatcherConnection.dispatch (C:\Users\gstore\AppData\Local\Temp\playwright-java-4435475597216201590\package\lib\server\dispatchers\dispatcher.js:307:39)
+}
+Call log:
+-   - waiting for getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName(&quot;Add to Cart&quot;)).first()
+
+	at com.microsoft.playwright.impl.WaitableResult.get(WaitableResult.java:52)
+	at com.microsoft.playwright.impl.ChannelOwner.runUntil(ChannelOwner.java:132)
+	at com.microsoft.playwright.impl.Connection.sendMessage(Connection.java:130)
+	at com.microsoft.playwright.impl.ChannelOwner.sendMessage(ChannelOwner.java:118)
+	at com.microsoft.playwright.impl.FrameImpl.waitForSelectorImpl(FrameImpl.java:1060)
+	at com.microsoft.playwright.impl.FrameImpl.waitForSelectorImpl(FrameImpl.java:1050)
+	at com.microsoft.playwright.impl.FrameImpl.lambda$waitForSelector$46(FrameImpl.java:1046)
+	at com.microsoft.playwright.impl.LoggingSupport.withLogging(LoggingSupport.java:47)
+	at com.microsoft.playwright.impl.ChannelOwner.withLogging(ChannelOwner.java:97)
+	at com.microsoft.playwright.impl.FrameImpl.waitForSelector(FrameImpl.java:1046)
+	at com.microsoft.playwright.impl.LocatorImpl.elementHandle(LocatorImpl.java:216)
+	at com.microsoft.playwright.impl.LocatorImpl.withElement(LocatorImpl.java:83)
+	at com.microsoft.playwright.impl.LocatorImpl.scrollIntoViewIfNeeded(LocatorImpl.java:491)
+	at com.microsoft.playwright.Locator.scrollIntoViewIfNeeded(Locator.java:4415)
+	at ge.tbc.testautomation.steps.magento.ItemsSteps.scrollToAddToCartBtn(ItemsSteps.java:65)
+	at ge.tbc.testautomation.pom.magento.MagentoTests.purchaseItem(MagentoTests.java:154)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+Caused by: com.microsoft.playwright.TimeoutError: Error {
+  message=&apos;Timeout 30000ms exceeded.
+  name=&apos;TimeoutError
+  stack=&apos;TimeoutError: Timeout 30000ms exceeded.
+    at ProgressController.run (C:\Users\gstore\AppData\Local\Temp\playwright-java-4435475597216201590\package\lib\server\progress.js:76:26)
+    at Frame.waitForSelector (C:\Users\gstore\AppData\Local\Temp\playwright-java-4435475597216201590\package\lib\server\frames.js:647:23)
+    at FrameDispatcher.waitForSelector (C:\Users\gstore\AppData\Local\Temp\playwright-java-4435475597216201590\package\lib\server\dispatchers\frameDispatcher.js:82:116)
+    at FrameDispatcher._handleCommand (C:\Users\gstore\AppData\Local\Temp\playwright-java-4435475597216201590\package\lib\server\dispatchers\dispatcher.js:94:40)
+    at DispatcherConnection.dispatch (C:\Users\gstore\AppData\Local\Temp\playwright-java-4435475597216201590\package\lib\server\dispatchers\dispatcher.js:307:39)
+}
+Call log:
+-   - waiting for getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName(&quot;Add to Cart&quot;)).first()
+
+	at com.microsoft.playwright.impl.Connection.dispatch(Connection.java:254)
+	at com.microsoft.playwright.impl.Connection.processOneMessage(Connection.java:211)
+	at com.microsoft.playwright.impl.ChannelOwner.runUntil(ChannelOwner.java:130)
+	... 45 more
+... Removed 30 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m1">ge.tbc.testautomation.pom.magento.MagentoTests#purchaseItem</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">com.microsoft.playwright.TimeoutError: Error {
+  message=&apos;Timeout 30000ms exceeded.
+  name=&apos;TimeoutError
+  stack=&apos;TimeoutError: Timeout 30000ms exceeded.
+    at ProgressController.run (C:\Users\gstore\AppData\Local\Temp\playwright-java-4435475597216201590\package\lib\server\progress.js:76:26)
+    at Frame.waitForSelector (C:\Users\gstore\AppData\Local\Temp\playwright-java-4435475597216201590\package\lib\server\frames.js:647:23)
+    at FrameDispatcher.waitForSelector (C:\Users\gstore\AppData\Local\Temp\playwright-java-4435475597216201590\package\lib\server\dispatchers\frameDispatcher.js:82:116)
+    at FrameDispatcher._handleCommand (C:\Users\gstore\AppData\Local\Temp\playwright-java-4435475597216201590\package\lib\server\dispatchers\dispatcher.js:94:40)
+    at DispatcherConnection.dispatch (C:\Users\gstore\AppData\Local\Temp\playwright-java-4435475597216201590\package\lib\server\dispatchers\dispatcher.js:307:39)
+}
+Call log:
+-   - waiting for getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName(&quot;Add to Cart&quot;)).first()
+
+	at com.microsoft.playwright.impl.WaitableResult.get(WaitableResult.java:52)
+	at com.microsoft.playwright.impl.ChannelOwner.runUntil(ChannelOwner.java:132)
+	at com.microsoft.playwright.impl.Connection.sendMessage(Connection.java:130)
+	at com.microsoft.playwright.impl.ChannelOwner.sendMessage(ChannelOwner.java:118)
+	at com.microsoft.playwright.impl.FrameImpl.waitForSelectorImpl(FrameImpl.java:1060)
+	at com.microsoft.playwright.impl.FrameImpl.waitForSelectorImpl(FrameImpl.java:1050)
+	at com.microsoft.playwright.impl.FrameImpl.lambda$waitForSelector$46(FrameImpl.java:1046)
+	at com.microsoft.playwright.impl.LoggingSupport.withLogging(LoggingSupport.java:47)
+	at com.microsoft.playwright.impl.ChannelOwner.withLogging(ChannelOwner.java:97)
+	at com.microsoft.playwright.impl.FrameImpl.waitForSelector(FrameImpl.java:1046)
+	at com.microsoft.playwright.impl.LocatorImpl.elementHandle(LocatorImpl.java:216)
+	at com.microsoft.playwright.impl.LocatorImpl.withElement(LocatorImpl.java:83)
+	at com.microsoft.playwright.impl.LocatorImpl.scrollIntoViewIfNeeded(LocatorImpl.java:491)
+	at com.microsoft.playwright.Locator.scrollIntoViewIfNeeded(Locator.java:4415)
+	at ge.tbc.testautomation.steps.magento.ItemsSteps.scrollToAddToCartBtn(ItemsSteps.java:65)
+	at ge.tbc.testautomation.pom.magento.MagentoTests.purchaseItem(MagentoTests.java:154)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+Caused by: com.microsoft.playwright.TimeoutError: Error {
+  message=&apos;Timeout 30000ms exceeded.
+  name=&apos;TimeoutError
+  stack=&apos;TimeoutError: Timeout 30000ms exceeded.
+    at ProgressController.run (C:\Users\gstore\AppData\Local\Temp\playwright-java-4435475597216201590\package\lib\server\progress.js:76:26)
+    at Frame.waitForSelector (C:\Users\gstore\AppData\Local\Temp\playwright-java-4435475597216201590\package\lib\server\frames.js:647:23)
+    at FrameDispatcher.waitForSelector (C:\Users\gstore\AppData\Local\Temp\playwright-java-4435475597216201590\package\lib\server\dispatchers\frameDispatcher.js:82:116)
+    at FrameDispatcher._handleCommand (C:\Users\gstore\AppData\Local\Temp\playwright-java-4435475597216201590\package\lib\server\dispatchers\dispatcher.js:94:40)
+    at DispatcherConnection.dispatch (C:\Users\gstore\AppData\Local\Temp\playwright-java-4435475597216201590\package\lib\server\dispatchers\dispatcher.js:307:39)
+}
+Call log:
+-   - waiting for getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName(&quot;Add to Cart&quot;)).first()
+
+	at com.microsoft.playwright.impl.Connection.dispatch(Connection.java:254)
+	at com.microsoft.playwright.impl.Connection.processOneMessage(Connection.java:211)
+	at com.microsoft.playwright.impl.ChannelOwner.runUntil(ChannelOwner.java:130)
+	... 45 more
+... Removed 30 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m2">ge.tbc.testautomation.pom.magento.MagentoTests#purchaseItem</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">com.microsoft.playwright.TimeoutError: Error {
+  message=&apos;Timeout 30000ms exceeded.
+  name=&apos;TimeoutError
+  stack=&apos;TimeoutError: Timeout 30000ms exceeded.
+    at ProgressController.run (C:\Users\gstore\AppData\Local\Temp\playwright-java-4435475597216201590\package\lib\server\progress.js:76:26)
+    at Frame.waitForSelector (C:\Users\gstore\AppData\Local\Temp\playwright-java-4435475597216201590\package\lib\server\frames.js:647:23)
+    at FrameDispatcher.waitForSelector (C:\Users\gstore\AppData\Local\Temp\playwright-java-4435475597216201590\package\lib\server\dispatchers\frameDispatcher.js:82:116)
+    at FrameDispatcher._handleCommand (C:\Users\gstore\AppData\Local\Temp\playwright-java-4435475597216201590\package\lib\server\dispatchers\dispatcher.js:94:40)
+    at DispatcherConnection.dispatch (C:\Users\gstore\AppData\Local\Temp\playwright-java-4435475597216201590\package\lib\server\dispatchers\dispatcher.js:307:39)
+}
+Call log:
+-   - waiting for locator(&quot;.action.primary.checkout&quot;).last() to be visible
+
+	at com.microsoft.playwright.impl.WaitableResult.get(WaitableResult.java:52)
+	at com.microsoft.playwright.impl.ChannelOwner.runUntil(ChannelOwner.java:132)
+	at com.microsoft.playwright.impl.Connection.sendMessage(Connection.java:130)
+	at com.microsoft.playwright.impl.ChannelOwner.sendMessage(ChannelOwner.java:118)
+	at com.microsoft.playwright.impl.FrameImpl.waitForSelectorImpl(FrameImpl.java:1060)
+	at com.microsoft.playwright.impl.LocatorImpl.lambda$waitForImpl$8(LocatorImpl.java:634)
+	at com.microsoft.playwright.impl.LoggingSupport.withLogging(LoggingSupport.java:47)
+	at com.microsoft.playwright.impl.ChannelOwner.withLogging(ChannelOwner.java:97)
+	at com.microsoft.playwright.impl.LocatorImpl.waitForImpl(LocatorImpl.java:634)
+	at com.microsoft.playwright.impl.LocatorImpl.waitFor(LocatorImpl.java:630)
+	at com.microsoft.playwright.Locator.waitFor(Locator.java:5393)
+	at ge.tbc.testautomation.steps.magento.ShippingSteps.clickOnProceedToCheckoutBtn(ShippingSteps.java:63)
+	at ge.tbc.testautomation.pom.magento.MagentoTests.purchaseItem(MagentoTests.java:160)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+Caused by: com.microsoft.playwright.TimeoutError: Error {
+  message=&apos;Timeout 30000ms exceeded.
+  name=&apos;TimeoutError
+  stack=&apos;TimeoutError: Timeout 30000ms exceeded.
+    at ProgressController.run (C:\Users\gstore\AppData\Local\Temp\playwright-java-4435475597216201590\package\lib\server\progress.js:76:26)
+    at Frame.waitForSelector (C:\Users\gstore\AppData\Local\Temp\playwright-java-4435475597216201590\package\lib\server\frames.js:647:23)
+    at FrameDispatcher.waitForSelector (C:\Users\gstore\AppData\Local\Temp\playwright-java-4435475597216201590\package\lib\server\dispatchers\frameDispatcher.js:82:116)
+    at FrameDispatcher._handleCommand (C:\Users\gstore\AppData\Local\Temp\playwright-java-4435475597216201590\package\lib\server\dispatchers\dispatcher.js:94:40)
+    at DispatcherConnection.dispatch (C:\Users\gstore\AppData\Local\Temp\playwright-java-4435475597216201590\package\lib\server\dispatchers\dispatcher.js:307:39)
+}
+Call log:
+-   - waiting for locator(&quot;.action.primary.checkout&quot;).last() to be visible
+
+	at com.microsoft.playwright.impl.Connection.dispatch(Connection.java:254)
+	at com.microsoft.playwright.impl.Connection.processOneMessage(Connection.java:211)
+	at com.microsoft.playwright.impl.ChannelOwner.runUntil(ChannelOwner.java:130)
+	... 42 more
+... Removed 30 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m3">ge.tbc.testautomation.pom.magento.MagentoTests#addToCartTest</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m4">ge.tbc.testautomation.pom.magento.MagentoTests#colorChangeTest</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m5">ge.tbc.testautomation.pom.magento.MagentoTests#deleteFromCart</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m6">ge.tbc.testautomation.pom.magento.MagentoTests#mobileNavigationTest</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m7">ge.tbc.testautomation.pom.magento.MagentoTests#outOfStockOfferTest</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m8">ge.tbc.testautomation.pom.magento.MagentoTests#reviewNumberTest</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m9">ge.tbc.testautomation.pom.magento.MagentoTests#saveToFavoritesWhileUnauthorizedTest</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m10">ge.tbc.testautomation.pom.toolwebsite.isolatedcontext.IsolatedContextTests#TagsTest</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m11">ge.tbc.testautomation.pom.toolwebsite.isolatedcontext.IsolatedContextTests#favouritesTest</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m12">ge.tbc.testautomation.pom.toolwebsite.isolatedcontext.IsolatedContextTests#filterTest</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m13">ge.tbc.testautomation.pom.toolwebsite.isolatedcontext.IsolatedContextTests#removeFavouriteTest</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m14">ge.tbc.testautomation.pom.toolwebsite.sharedcontext.SharedContextTests#TagsTest</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m15">ge.tbc.testautomation.pom.toolwebsite.sharedcontext.SharedContextTests#favouritesTest</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m16">ge.tbc.testautomation.pom.toolwebsite.sharedcontext.SharedContextTests#filterTest</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m17">ge.tbc.testautomation.pom.toolwebsite.sharedcontext.SharedContextTests#removeFavouriteTest</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+</body>
+</html>

@@ -7,20 +7,17 @@ public class SearchResultsSteps {
     Page page;
     SearchResultsPage searchResultsPage;
 
-    public SearchResultsSteps(Page page)
-    {
+    public SearchResultsSteps(Page page) {
         this.page = page;
         this.searchResultsPage = new SearchResultsPage(page);
     }
 
-    public SearchResultsSteps locateFirstSearchResult()
-    {
+    public SearchResultsSteps locateFirstSearchResult() {
         searchResultsPage.searchResultImages.first().waitFor();
         return this;
     }
 
-    public SearchResultsSteps goToItemsPage()
-    {
+    public SearchResultsSteps goToItemsPage() {
         searchResultsPage.searchResultImages.first().click();
         return this;
     }

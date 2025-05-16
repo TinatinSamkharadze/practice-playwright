@@ -4,8 +4,8 @@ import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 
 public class SearchResultsPage {
-   public Locator searchResultImages;
-   public Locator reviewCountLink;
+   public Locator searchResultImages,
+   reviewCountLink;
 
     public SearchResultsPage(Page page)
     {

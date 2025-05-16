@@ -51,4 +51,16 @@ public class WishlistSteps {
         softAssert.assertTrue(welcomeText.contains("Welcome, " + signUpSteps.testFirstName + " " + signUpSteps.testLastName + "!"));
         return this;
     }
+
+    public WishlistSteps clickDropDown()
+    {
+        wishlistPage.dropdown.click();
+        return this;
+    }
+
+   public WishlistSteps signOut()
+   {
+       wishlistPage.signOut.click();
+       return this;
+   }
 }
